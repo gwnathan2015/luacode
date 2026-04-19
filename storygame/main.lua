@@ -20,18 +20,7 @@ function love.draw()
     local col_number, row_number, row, x_c, y_c
     draw_map(game_map1, sprites)
     draw_characters(all_characters, sprites)
-    for row_number, row in pairs(game_map1) do
-        for col_number, tile_info in pairs(row) do
-            x = (col_number - 1) * 16
-            y = (row_number - 1) * 16
-            if tile_info.o ~= nil then
-                for depth, sprite_num in pairs(tile_info.o) do
-                    love.graphics.draw(sprites[sprite_num], x, y)
-                end
-            end
-            --print(row_number, col_number, sprite_num)
-        end
-    end
+    draw_map_overlay(game_map1, sprites)
 end
 
 --- 85 new main character for now

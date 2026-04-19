@@ -36,3 +36,18 @@ function draw_map(game_map, sprites)
         end
     end
 end
+
+function draw_map_overlay(game_map, sprites)
+    for row_number, row in pairs(game_map) do
+        for col_number, tile_info in pairs(row) do
+            x = (col_number - 1) * 16
+            y = (row_number - 1) * 16
+            if tile_info.o ~= nil then
+                for depth, sprite_num in pairs(tile_info.o) do
+                    love.graphics.draw(sprites[sprite_num], x, y)
+                end
+            end
+            --print(row_number, col_number, sprite_num)
+        end
+    end
+end
