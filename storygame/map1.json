@@ -1,0 +1,10 @@
+
+{
+    "game_map": [
+        "G   |G   |Gf  |G   |P   |P   |P   |G   |G   |Gf  |Gf  |P   |G   ",
+        "GU  |G   |G   |Gf  |P   |G   |G   |G   |Gf  |P   |P   |P   |P   ",
+        "GT  |Gf  |P   |Gf  |G   |P   |G   |Gf  |G   |P   |P   |G   |P   ",
+        "P   |P   |G   |Gf  |P   |P   |P   |P   |Gf  |G   |Gf  |P   |G   ",
+        "P   |Gf  |P   |P   |G   |P   |GF  |P   |P   |GF  |G   |P   |P   "
+    ]
+}

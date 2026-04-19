@@ -1,0 +1,16 @@
+
+Legend: 
+🔴🔵 planned (high and low priority)
+▶️ in development
+✅ complete
+
+
+
+🔴 Main character can pick up items into inventory (using q key) and store them
+🔴 Main character can show inventory and retreive item (using e key)
+
+
+🔴 Game enriches map with trees and other auxiliary overlays.
+🔵 Game creates map dynamically when starting it.
+
+▶️ npc actions and other things
