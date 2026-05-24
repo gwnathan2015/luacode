@@ -26,7 +26,7 @@
 ## Design
 
 * 🔴 Lay out module structure for game (map vs. player vs. interaction)
-* 🔴 Refactor player movement as Lua class.
+* ▶️ Refactor player movement as Lua class.
 
 * 🔵 Package game for distribution (see https://love2d.org/wiki/Game_Distribution)
 

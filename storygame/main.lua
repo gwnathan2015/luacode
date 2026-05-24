@@ -19,7 +19,7 @@ end
 function love.draw()
     local col_number, row_number, row, x_c, y_c
     draw_map(game_map1, sprites)
-    draw_characters(all_characters, sprites)
+    draw_characters(sprites)
     draw_map_overlay(game_map1, sprites)
 end
 
