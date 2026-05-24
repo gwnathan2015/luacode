@@ -29,7 +29,7 @@
 * ▶️ Refactor player movement as Lua class.
 
 * 🔵 Package game for distribution (see https://love2d.org/wiki/Game_Distribution)
-
+* ▶️ refactor whole project. (map indev, characters almost done, other thigns not started yet)
 ## Organizing
 
 * 🔵 Player can access a change log (from menu or web page) to see what changed in the game

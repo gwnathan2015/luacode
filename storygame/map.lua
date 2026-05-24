@@ -1,26 +1,90 @@
 require("mapreader")
 
-BUSH = 5
-GREEN = 1
-FLOWERS = 2
-PATH = 25
+local maps = {}
+
+maps.Map = {}
+
+maps.Map.__index = maps.Map
+
+function maps.Map:new(name)
+    local new_object = {name = name, tiles = {}}
+    setmetatable(new_object, self)
+    new_object.__index = maps.Map
+    return new_object
+end
+
+maps.Tile = {}
+
+maps.Tile.__index = maps.Tile
+
+function maps.Tile:new(name, sprite_num)
+    local new_object = {
+        name = name, 
+        sprite_num = sprite_num,
+    }
+    setmetatable(new_object, self)
+    new_object.__index = maps.Tile
+    return new_object
+end
+
+maps.Object = {}
+
+maps.Object.__index = maps.Object
+
+function maps.Object:new(name, sprite_num, x, y, z)
+    if not x then x = 0 end
+    if not y then y = 0 end
+    if not z then z = 0 end
+
+    local new_object = {
+        name = name, 
+        sprite_num = sprite_num,
+        x = x,
+        y = y, 
+        z = z
+    }
+    setmetatable(new_object, self)
+    new_object.__index = maps.Object
+    return new_object
+end
+
+function maps.Object:draw()
+    local scaled_x = (self.x - 1) * 16
+    local scaled_y = (self.y - 1) * 16
+    love.graphics.draw(sprites[self.sprite_num], scaled_x, scaled_y)
+end
+
+maps.TwoTileObject = {}
+
+maps.TwoTileObject.__index = maps.TwoTileObject
+setmetatable(maps.TwoTileObject, {__index = maps.Object})
+
+function maps.TwoTileObject:new(name, sprite_num, upper_sprite_num, x, y, z)
+    local new_object = maps.Object:new(sprite_num, x, y, z)
+    new_object["upper_sprite_num"] = upper_sprite_num
+    new_object["upper_sprite"] = sprites[upper_sprite_num]
+
+    setmetatable(new_object, {__index = maps.TwoTileObject})
+    new_object.__index = maps.TwoTileObject
+    return new_object
+end
+
+
+
+
+BUSH = 5 -- Object
+GREEN = 1 -- Tile
+FLOWERS = 2 -- Object 
+PATH = 25  -- Tile (floor)
 TREE_L = 15
 TREE_U = 3
 
-game_map1 = read_map("map1.json")
-    game_map2 = {
-        { { u = { GREEN }, o = { TREE_U } }, { u = { GREEN } },   { u = { FLOWERS } }, { u = { GREEN } },   { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { GREEN } },   { u = { GREEN } } },
-        { { u = { GREEN, TREE_L } },         { u = { PATH } },    { u = { PATH } },    { u = { FLOWERS } }, { u = { GREEN } },   { u = { GREEN } },   { u = { PATH } },    { u = { FLOWERS } }, { u = { FLOWERS } } },
-        { { u = { FLOWERS } },               { u = { PATH } },    { u = { GREEN } },   { u = { GREEN } },   { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { GREEN } },   { u = { PATH } },    { u = { GREEN } } },
-        { { u = { GREEN } },                 { u = { FLOWERS } }, { u = { GREEN } },   { u = { PATH } },    { u = { FLOWERS } }, { u = { GREEN } },   { u = { GREEN } },   { u = { PATH } },    { u = { GREEN } } },
-        { { u = { FLOWERS } },               { u = { GREEN } },   { u = { PATH } },    { u = { PATH } },    { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } , o = {TREE_U}} },
-        { { u = { PATH } },                  { u = { FLOWERS } }, { u = { GREEN } },   { u = { PATH } },    { u = { PATH } },    { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { GREEN, TREE_L } } },
-        { { u = { PATH } },                  { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { PATH } },    { u = { PATH } },    { u = { PATH } },    { u = { GREEN } } },
-        { { u = { PATH } },                  { u = { GREEN } },   { u = { PATH } },    { u = { PATH } },    { u = { FLOWERS } }, { u = { PATH } },    { u = { PATH } },    { u = { GREEN } },   { u = { PATH } } },
-        { { u = { PATH } },                  { u = { GREEN } },   { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { GREEN } },   { u = { FLOWERS } } },
-        { { u = { PATH }, o = {TREE_U} },    { u = { GREEN } },   { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { GREEN } },   { u = { FLOWERS } } },
-        { { u = { GREEN, TREE_L } },         { u = { GREEN } },   { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },   { u = { FLOWERS } } }
-    }
+maps.flower_tile = maps.Object:new("flower", FLOWERS, 3, 4)
+maps.bush_tile = maps.Object:new("bush", BUSH, 2, 2)
+
+maps.all_objects = {}
+table.insert(maps.all_objects, maps.flower_tile)
+table.insert(maps.all_objects, maps.bush_tile)
 
 function draw_map(game_map, sprites)
     local col_number, row_number, row, x, y
@@ -49,5 +113,8 @@ function draw_map_overlay(game_map, sprites)
             end
             --print(row_number, col_number, sprite_num)
         end
+    end
+    for i, o in pairs(maps.all_objects) do
+        o:draw()
     end
 end
