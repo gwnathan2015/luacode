@@ -14,8 +14,8 @@ characters.Character.__index = characters.Character
 --
 -- put name and sprite into the new character.
 -- Add the new character to the table list of all_characters.
-function characters.Character:new(name, sprite)
-    local new_object = {sprite = sprite, name = name}
+function characters.Character:new(name, sprite, game_map)
+    local new_object = {sprite = sprite, name = name, game_map = game_map}
     setmetatable(new_object, self)
     new_object.__index = characters.Character
     table.insert(characters.Character.all_characters, new_object)
@@ -23,13 +23,36 @@ function characters.Character:new(name, sprite)
 end
 
 
--- Moves the character around, unconditionally. edits character self.x and self.y
-function characters.Character:move(dx, dy)
-    if self.x == 0 and dx < 0 then
-        return false
+-- Moves the character around if possible, returns False if not. 
+--if yes then it moves when the player presses to move, if not, then it doesnt move there when the player presses to move
+-- Edits character self.x and self.y.
+--
+-- @param step_in_x -- Movement in x direction, relative to current position,
+-- @param step_in_y -- Movement in y direction, relative to current position,
+-- @return True if the move was allowed and completed.
+function characters.Character:move(step_in_x, step_in_y)
+
+    local future_x = self.x + step_in_x
+    local future_y = self.y + step_in_y
+
+    if future_x <= 0 then return false end
+    if future_y <= 0 then return false end
+    if future_y > #(self.game_map) then return false end
+    if future_x > #(self.game_map[1]) then return false end
+
+    for num, character in pairs(characters.Character.all_characters) do
+        if future_x == character.x and future_y == character.y then
+            return false 
+        end
     end
-    self.x = self.x + dx
-    self.y = self.y + dy
+    
+
+    local future_cell = self.game_map[future_y][future_x]
+    for index, sprite_num in pairs(future_cell.u) do
+        if sprite_num == TREE_L then return false end
+    end
+    self.x = future_x
+    self.y = future_y
     return true
 end
 
@@ -50,41 +73,11 @@ function characters.Character:draw(sprites)
         love.graphics.draw(sprites[c_sprite], x_c, y_c)
 end
 
-characters.main_character = characters.Character:new("player", 1085)
-characters.main_character:move(2,1)
-
-characters.wizard = characters.Character:new("wizard", 1084)
-characters.wizard:move(10,2)
-
-
 function characters.draw_characters(sprites)
     for num, character in pairs(characters.Character.all_characters) do
         character:draw(sprites)
     end
 end
 
--- Checks if character can move to the next spot. 
---if yes then it moves when the player presses to move, if not, then it doesnt move there when the player presses to move
--- (only applies to specific tiles like the bottom half of trees or other characters).
-function characters.is_move_allowed(future_x, future_y, game_map)
-    if future_x <= 0 then return false end
-    if future_y <= 0 then return false end
-    if future_y > #(game_map) then return false end
-    if future_x > #(game_map[1]) then return false end
-
-    for num, character in pairs(characters.Character.all_characters) do
-        if future_x == character.x and future_y == character.y then 
-            return false 
-        end
-    end
-    
-
-    local future_cell = game_map[future_y][future_x]
-    for index, sprite_num in pairs(future_cell.u) do
-        if sprite_num == TREE_L then return false end
-    end
-
-    return true
-end
 
 return characters

@@ -8,6 +8,13 @@ require("mapreader")
 
 game_map1 = read_map("map1.json")
 
+characters.main_character = characters.Character:new("player", 1085, game_map1)
+characters.main_character:move(2,1)
+
+characters.wizard = characters.Character:new("wizard", 1084, game_map1)
+characters.wizard:move(10,2)
+
+
 function love.load()
     love.keyboard.setKeyRepeat( true )
     for i = 0, 131 do
@@ -31,25 +38,16 @@ end
 
 
 function love.keypressed(key, scancode, isrepeat)
-    local future_dx = 0
-    local future_dy = 0
-
     if key == "escape" then
         love.event.quit()
     elseif key == "w" then
-        future_dy =  -1
+        characters.main_character:move(0, -1)
     elseif key == "a" then
-        future_dx = -1
+        characters.main_character:move(-1, 0)
     elseif key == "s" then
-        future_dy = 1
+        characters.main_character:move(0, 1)
     elseif key == "d" then
-        future_dx = 1
-    end
-    if characters.is_move_allowed(
-        characters.main_character.x + future_dx, 
-        characters.main_character.y + future_dy, 
-        game_map1) then
-        characters.main_character:move(future_dx, future_dy)
+        characters.main_character:move(1, 0)
     end
 end
 

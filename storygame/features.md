@@ -18,6 +18,8 @@
 
 * 🔵 Game creates map dynamically when starting it.
 * 🔵  performance settings (if needed)
+* 🔵 NPC nametags
+* 🔵player selecting name on nametag
 
 
 * ▶️ npc actions and other things
