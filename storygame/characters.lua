@@ -22,7 +22,15 @@ function characters.Character:new(name, sprite, game_map)
     return new_object
 end
 
+-- determines character health
+function characters.Character:health()
 
+end
+
+-- determines if they attack the player or not
+function characters.Character:faction()
+
+end
 -- Moves the character around if possible, returns False if not. 
 --if yes then it moves when the player presses to move, if not, then it doesnt move there when the player presses to move
 -- Edits character self.x and self.y.
