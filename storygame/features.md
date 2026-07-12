@@ -34,5 +34,5 @@
 * ▶️ refactor whole project. (map indev, characters almost done, other thigns not started yet)
 ## Organizing
 
-* 🔵 Player can access a change log (from menu or web page) to see what changed in the game
+* ✅ Player can access a change log (from menu or web page) to see what changed in the game
   recently.
