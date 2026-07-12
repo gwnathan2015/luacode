@@ -56,6 +56,13 @@ function characters.Character:move(step_in_x, step_in_y)
     return true
 end
 
+function characters.Character:pos()
+    return {
+        x = self.x, 
+        y = self.y
+    }
+end
+
 -- Prints the character's information in the console.
 function characters.Character:print()
     print("---- ", self.name)
