@@ -22,3 +22,7 @@ the player starts with 250 HP because the player had a big health potion. the sw
 getting rid of special dwarves lessens the dwarves supply of them, as they are very hard to create, taking years after the empires formation for the first golem to be finished.
 
 when the final boss fight is ahead, beware the dwarves are tricky to fight, they will spend years trying to get rid of you, especially if their at their weakest, witch is when your at your weakest, underestimating them. beware, every turn could bring a dwarven attack, every battle, looses food, health, and potions, and every escape, looses morale.
+
+the farmer sells bread, gives 20 HP, apples gives 10 HP, wheat, give it to the miller and get a portable milling station, potatoes gives 65 HP. 1 bread is usually worth 2 or 3 coins, while 1 apple is usually worth 1, and wheat is free (for a quest) when its not its usually 2 coins, 1 potato sits at 3 or 4 coins.
+
+one quest has the player protecting a trade caravan to the elven city of everless, only right after during your overnight stay, you hear dwarve noises, you have to protect the city from a dwarven invasion.
