@@ -54,3 +54,7 @@ everless is in a ring of magic, a magical barrier created in 1206 BCE by elven w
 the great ocean is being drained by the dwarves, its already half its usual size, where all this water goes is unknown, however legends say its the king of dwarveia practicing ice freezing, and throwing. the reigion of marell is larger than the used to exist town, but you see... the area has grown due to the great oceans no longer being great.
 
 the miller offers you a portable milling station, in return for you transporting from the farmer to the miller. with it, you can turn wheat into flour, flour into dough, and dough into any type of bread you can make. the weaponsmith, offers you axes, swords, pickaxes (for if you need stone to repair portable stations), and the guard of the towers, offers you arrows, and a portable fletching station.
+
+typical tools include stone iron and bronze swords axes and arrows, with wooden silk bows, the silk coming from silk trees in everless, currently the massive iron and bronze fields are in dwarven territory. one quest is to reclaim it. afetr the quest, the price of iron and iron tools goes from 50 coins to 15 coins. same with bronze going from 35 coins to 10 coins. arrows on both types go from around 20 to only 8 coins.
+
+the king of fort city and the crown prince of everless (current acting king) offer you 30 coins each for reclaiming the reigion and setting up fortifications. 
