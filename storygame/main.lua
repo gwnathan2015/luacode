@@ -74,6 +74,7 @@ function love.load()
     end
 
     love.window.setTitle("Storygame Pre-Alpha-1.8.2")
+    love.window.setMode(800, 600, {resizable=true, vsync=0, minwidth=400, minheight=300})
 end
 
 local function deal_environmental_damage()
