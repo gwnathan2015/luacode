@@ -8,7 +8,9 @@ TILE_LOADER_MAP = {
     ["f"] = 2, -- Flower
     ["T"] = 15, -- Tree lower part
     ["U"] = 3,  -- Tree upper part
-    ["P"] = 25 -- Path
+    ["P"] = 25, -- Path
+    ["S"] = 1041 -- spike
+
 }
 
 function read_map(filename)
@@ -38,13 +40,5 @@ function read_map(filename)
     return game_map
 end
 
-print('xxxx')
+print('game map loading finished')
 print(json.encode(game_map))
-
-    game_map1 = {
-        { { u = { GREEN }, o = { TREE_U } }, { u = { GREEN } },   { u = { FLOWERS } }, { u = { GREEN } },   { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { GREEN } },   { u = { GREEN } } },
-        { { u = { GREEN, TREE_L } },         { u = { PATH } },    { u = { PATH } },    { u = { FLOWERS } }, { u = { GREEN } },   { u = { GREEN } },   { u = { PATH } },    { u = { FLOWERS } }, { u = { FLOWERS } } },
-        { { u = { FLOWERS } },               { u = { GREEN } },   { u = { PATH } },    { u = { PATH } },    { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } , o = {TREE_U}} },
-        { { u = { PATH }, o = {TREE_U} },    { u = { GREEN } },   { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { GREEN } },   { u = { FLOWERS } } },
-        { { u = { GREEN, TREE_L } },         { u = { GREEN } },   { u = { FLOWERS } }, { u = { FLOWERS } }, { u = { PATH } },    { u = { GREEN } },   { u = { FLOWERS } }, { u = { PATH } },   { u = { FLOWERS } } }
-    }

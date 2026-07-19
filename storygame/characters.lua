@@ -1,6 +1,49 @@
 
 local characters = {}
 
+characters.Coordinates = {}
+
+characters.Coordinates.__index = characters.Coordinates
+
+function characters.Coordinates:new(x, y)
+    new_object = {
+        x = x,
+        y = y
+    }
+    setmetatable(new_object, self)
+    new_object.__index = characters.Coordinates
+    return new_object
+end
+
+function characters.Coordinates:__eq(other)
+    return self.x == other.x and self.y == other.y
+end
+
+
+characters.CharacterStats = {
+}
+
+characters.CharacterStats.__index = characters.CharacterStats
+
+function characters.CharacterStats:new(max_health, current_health)
+    if current_health == nil then
+        current_health = max_health
+    end
+
+    local new_object = {
+        max_health = max_health,
+        current_health = current_health,
+        morale_level = 0,
+    }
+    setmetatable(new_object, self)
+    new_object.__index = characters.CharacterStats
+    return new_object
+end
+
+function characters.CharacterStats:deal_damage(amount)
+    self.current_health = self.current_health - amount
+end
+
 -- Any kind of character in the story game, e.g. the main player
 characters.Character = {
         x = 0,
@@ -14,8 +57,21 @@ characters.Character.__index = characters.Character
 --
 -- put name and sprite into the new character.
 -- Add the new character to the table list of all_characters.
-function characters.Character:new(name, sprite, game_map)
-    local new_object = {sprite = sprite, name = name, game_map = game_map}
+function characters.Character:new(name, sprite, game_map, stats, x, y)
+    if x == nil then
+        x = 0
+    end
+    if y == nil then
+        y = 0
+    end
+    local new_object = {
+        sprite = sprite, 
+        name = name, 
+        game_map = game_map,
+        stats = stats,
+        x = x,
+        y = y,
+    }
     setmetatable(new_object, self)
     new_object.__index = characters.Character
     table.insert(characters.Character.all_characters, new_object)
@@ -24,10 +80,11 @@ end
 
 -- determines character health
 function characters.Character:health()
+    
 
 end
 
--- determines if they attack the player or not
+-- determines if the characters attack the player or not
 function characters.Character:faction()
 
 end
@@ -65,10 +122,7 @@ function characters.Character:move(step_in_x, step_in_y)
 end
 
 function characters.Character:pos()
-    return {
-        x = self.x, 
-        y = self.y
-    }
+    return characters.Coordinates:new(self.x, self.y)
 end
 
 -- Prints the character's information in the console.

@@ -54,6 +54,19 @@ function maps.Object:draw()
     love.graphics.draw(sprites[self.sprite_num], scaled_x, scaled_y)
 end
 
+maps.ActiveTile = {}
+
+maps.ActiveTile.__index = maps.ActiveTile
+setmetatable(maps.ActiveTile, {__index = maps.Tile})
+
+function maps.ActiveTile:new(name, sprite_num)
+    local new_object = maps.Tile:new(sprite_num)
+
+    setmetatable(new_object, {__index = maps.ActiveTile})
+    new_object.__index = maps.ActiveTile
+    return new_object
+end
+
 maps.TwoTileObject = {}
 
 maps.TwoTileObject.__index = maps.TwoTileObject
@@ -78,6 +91,7 @@ FLOWERS = 2 -- Object
 PATH = 25  -- Tile (floor)
 TREE_L = 15
 TREE_U = 3
+SPIKE = 1041
 
 maps.flower_tile = maps.Object:new("flower", FLOWERS, 3, 4)
 maps.bush_tile = maps.Object:new("bush", BUSH, 2, 2)
