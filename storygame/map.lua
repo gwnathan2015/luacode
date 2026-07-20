@@ -93,11 +93,9 @@ TREE_L = 15
 TREE_U = 3
 SPIKE = 1041
 
-maps.flower_tile = maps.Object:new("flower", FLOWERS, 3, 4)
 maps.bush_tile = maps.Object:new("bush", BUSH, 2, 2)
 
 maps.all_objects = {}
-table.insert(maps.all_objects, maps.flower_tile)
 table.insert(maps.all_objects, maps.bush_tile)
 
 function draw_map(game_map, sprites)
