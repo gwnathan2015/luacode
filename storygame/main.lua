@@ -23,6 +23,15 @@ characters.main_character = characters.Character:new(
     1
 )
 
+characters.farmer = characters.Character:new(
+    "farmer", 
+    1084, 
+    game_map1,
+    characters.CharacterStats:new(100),
+    10,
+    2
+)
+
 characters.wizard = characters.Character:new(
     "wizard", 
     1084, 
