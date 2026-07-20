@@ -1,5 +1,5 @@
 texts2 = {
-    "well, there cant be anymore slpits of prodit, so you will just be earning wage",
+    "well, there cant be anymore splits of profit, so you will just be earning wage",
     "stop nuking ukraine!",
     "where is russias 2nd civil war?"
 }
