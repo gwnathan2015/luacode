@@ -28,8 +28,8 @@ characters.farmer = characters.Character:new(
     1098, 
     game_map1,
     characters.CharacterStats:new(100),
-    10,
-    2
+    9,
+    6
 )
 
 characters.wizard = characters.Character:new(
