@@ -25,7 +25,7 @@ characters.main_character = characters.Character:new(
 
 characters.farmer = characters.Character:new(
     "farmer", 
-    1084, 
+    1098, 
     game_map1,
     characters.CharacterStats:new(100),
     10,
