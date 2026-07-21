@@ -15,6 +15,48 @@ storygame is the only thing worth seeing, it is a fantasy coding project for me 
  
 nothing much to see here, most features arent here yet, although there is a wizard (supposed to sell potions when the game is done), a swordsman(follows the player and supposed to help the player defeat dwarves) and a working movement system where the bottom half of trees and NPCs cant be moved into. theres a big glitch we cant fix where a certain flower makes the player and npc characters dissapear. to see future game updates go into storygame and see the MD file for it (not readme.md)
 
+for the future, when modding can be implemented (maybe it will) mods will look like this:
+
+mods/
+    dwarven_expansion_mod/
+        dwarven_expansion_mod info.lua
+        assets/
+            tiles/
+            characters/
+            items/
+            ui/
+        code/
+            maps/
+                dwarven_expansion_mod map1.lua
+                dwarven_expansion_mod map2.lua
+            hazards.lua
+            npcs.lua
+            items.lua
+            init.lua
+
+the info.lua file for each mod will say basic info like:
+
+return {
+    name = "Dwarven Expansion Mod",
+    version = "1.0",
+    author = "Nathan",
+    description = "Adds dwarven ruins, new hazards, and expanded lore.",
+    mod_type = "addition", -- content + features
+    entry = "code/init.lua",
+    assets = {
+        tiles = "assets/tiles/",
+        characters = "assets/characters/",
+        items = "assets/items/",
+        ui = "assets/ui/"
+    },
+    dependencies = {},
+    load_priority = 1
+}
+
+the init.lua file HAS to tell the game where every file in the code section is, because in reality, in the code folder, you can put any folder path you want, as long as init.lua tells the game where the mdos files are. the maps have to have the mods name in it with underscores replacing spaces. the assets folder has to be organised exactly like is shown, or else the game wont laod them properly, and you will be stuck with broken maps.
+
+there are three types of mods, content mods witch only add maps using vanilla or modded tiles, and they dont need an assets folder, but everything else remains the same, addition mods, witch have evrything as shown, and feature mods, witch dont add maps or tiles, but can add brand new features, and even help loading other mods like an API core thingy in minecraft modding. please note this is planned theoreticals and wont actually work without a lot of rwriting the game engine. we hope to be there by the time were at our last beta or first release (if that ever comes)
+
 LORE AND STORY
 story game about mythical quests and creatures
 
